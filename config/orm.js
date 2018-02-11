@@ -18,7 +18,7 @@ var orm = {
       console.log(result);
     });
   },
-  updateOne: function(updateTable, setProperty, newValue, whereRef, matchesVal) {
+  updateOne: function(tableInput, setProperty, newValue, whereRef, matchesVal) {
     var queryString = "UPDATE ?? SET ?? = ? WHERE ?? = ?";
     console.log(queryString);
     connection.query(queryString, [updateTable, setProperty, newValue, whereRef, matchesVal], function(err, result) {
@@ -28,5 +28,5 @@ var orm = {
   }
 };
 
-// Export the orm object for the model (cat.js).
+// Export the orm
 module.exports = orm;
