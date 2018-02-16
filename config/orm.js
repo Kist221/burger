@@ -3,30 +3,34 @@ var connection = require("../config/connection.js");
 
 // orm preset queries
 var orm = {
-  selectAll: function(tableInput) {
+  selectAll: function(tableInput, cb) {
     var queryString = "SELECT * FROM ??";
     connection.query(queryString, [tableInput], function(err, result) {
       if (err) throw err;
-      console.log(result);
+      cb(result);
     });
   },
-  insertOne: function(tableInput, itemInput, newItem) {
+  insertOne: function(tableInput, itemInput, newItem, cb) {
     var queryString = "INSERT INTO ?? (??) VALUES (?)";
-    console.log(queryString);
     connection.query(queryString, [tableInput, itemInput, newItem], function(err, result) {
       if (err) throw err;
-      console.log(result);
+      console.log(queryString);
+      cb(result);
     });
   },
-  updateOne: function(tableInput, setProperty, newValue, whereRef, matchesVal) {
+  updateOne: function(tableInput, setProperty, newValue, whereRef, matchesVal, cb) {
     var queryString = "UPDATE ?? SET ?? = ? WHERE ?? = ?";
     console.log(queryString);
-    connection.query(queryString, [updateTable, setProperty, newValue, whereRef, matchesVal], function(err, result) {
+    connection.query(queryString, [tableInput, setProperty, newValue, whereRef, matchesVal], function(err, result) {
       if (err) throw err;
-      console.log(result);
+      cb(result);
     });
   }
 };
 
+orm.insertOne("burgers", "burger_name", "testing", function(res) {
+  console.log(res);
+  cd(res);
+})
 // Export the orm
 module.exports = orm;

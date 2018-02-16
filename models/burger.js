@@ -1,29 +1,22 @@
 // import ORM
 var orm = require("../config/orm.js");
 
-
-
-// select * burgers
-orm.selectAll("burgers");
-
-// insert burger
-orm.insertOne("burgers", "burger_name", "Burger Four");
-
-// set burger devoured value
-orm.updateOne("burgers", "devoured", true, "id", 4);
-
-
+// burger specifc ORM uses
 var burger = {
+  // select * burgers
   all: function(cb) {
     orm.selectAll("burgers", function(res) {
       cb(res);
     });
   },
+  // insert burger
   insert: function(name, cb) {
+    console.log("burger name: == " + name);
     orm.insertOne("burgers", "burger_name", name, function(res) {
       cb(res);
     });
   },
+  // set burger devoured value
   update: function(id, cb) {
     orm.updateOne("burgers", "devoured", true, "id", id, function(res) {
       cb(res);
@@ -31,5 +24,5 @@ var burger = {
   }
 };
 
-// Export the database functions for the controller (catsController.js).
-module.exports = cat;
+// Export the database functions for the controller
+module.exports = burger;
