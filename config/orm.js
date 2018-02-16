@@ -28,9 +28,10 @@ var orm = {
   }
 };
 
-orm.insertOne("burgers", "burger_name", "testing", function(res) {
-  console.log(res);
-  cd(res);
-})
+// orm.insertOne("burgers", "burger_name", "testing", function(res) {
+//   console.log(res);
+//   cd(res);
+// })
+
 // Export the orm
 module.exports = orm;

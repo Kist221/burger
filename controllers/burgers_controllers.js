@@ -19,12 +19,18 @@ router.get("/", function(req, res) {
 
 router.post("/add", function(req, res) {
 	var name = req.body.name.toString();
-	console.log("THIS IS THE BODY: " + name);
+	console.log("POST BODY: " + name);
 	burger.insert(name, function(data) {
-		console.log("Burger Added: " + req.body);
+		res.json(data);
 	});
-    res.json({ id: result.insertId });
-    console.log({ id: result.insertId });
+});
+
+router.put("/eat", function(req, res) {
+	var id = req.body.id.toString();
+	console.log("PUT BODY: " + id);
+	burger.update(id, function(data) {
+		res.json(data);
+	});
 });
 
 // Export routes for server.js to use.

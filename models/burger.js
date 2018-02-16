@@ -24,5 +24,9 @@ var burger = {
   }
 };
 
+// burger.all( function(res) {
+//   console.log(res);
+// });
+
 // Export the database functions for the controller
 module.exports = burger;
