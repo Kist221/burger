@@ -1,3 +1,15 @@
 body {
-	background: #ffffff url("../img/background.png") top left repeat;
+	background: #fff url("../img/background.png") top left repeat;
+	font-family: "century gothic", serif;
+}
+
+#bodyContent {
+	background: #fff;
+	width: 75%;
+	text-align: center;
+	margin: 0 auto;
+}
+
+#bobImg {
+	width: 75%;
 }
